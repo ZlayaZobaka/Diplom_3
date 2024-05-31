@@ -8,18 +8,19 @@ from api import Api
 
 @pytest.fixture(scope='function', params=['firefox', 'chrome'])
 def driver(request):
-    browser = None
+    driver = None
 
     if request.param == 'firefox':
-        browser = webdriver.Firefox()
+        driver = webdriver.Firefox()
     elif request.param == 'chrome':
-        browser = webdriver.Chrome()
+        driver = webdriver.Chrome()
 
-    browser.get(Urls.BASE_URL)
+    driver.get(Urls.BASE_URL)
+    driver.maximize_window()
 
-    yield browser
+    yield driver
 
-    browser.quit()
+    driver.quit()
 
 
 @allure.step(f'Создаем нового пользователя')

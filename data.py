@@ -1,7 +1,8 @@
 class Urls:
     BASE_URL = 'https://stellarburgers.nomoreparties.site'
-    AUTH_REGISTER_ENDPOINT = '/auth/register'
-    AUTH_USER_ENDPOINT = '/auth/user'
+    RESET_PASSWORD_URL = 'https://stellarburgers.nomoreparties.site/reset-password'
+    AUTH_REGISTER_ENDPOINT = '/api/auth/register'
+    AUTH_USER_ENDPOINT = '/api/auth/user'
 
 
 class WellKnownConstants:
