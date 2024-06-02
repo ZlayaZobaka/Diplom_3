@@ -1,11 +1,10 @@
 import allure
 from pages.main_page import MainPage
 from pages.login_page import LoginPage
-from locators.forgot_password_page_locators import ForgotPasswordPageLocator
 from locators.reset_password_page_locators import ResetPasswordPageLocator
 
 
-class TestMainPage:
+class TestRestorePassword:
 
     @allure.title('Тест перехода на страницу восстановления пароля по кнопке «Восстановить пароль»')
     @allure.description('Переходим по ссылками на страницу восстановления пароля, '
@@ -15,9 +14,9 @@ class TestMainPage:
         main_page.click_login_btn()
         login_page = LoginPage(driver)
 
-        forgot_pass_page = login_page.click_forgot_pass_link()
+        reset_pass_page = login_page.click_forgot_pass_link()
 
-        assert forgot_pass_page.find_elements(ForgotPasswordPageLocator.restore_btn)
+        assert reset_pass_page.is_element_visible(ResetPasswordPageLocator.restore_btn)
 
     @allure.title('Ввод почты и клик по кнопке «Восстановить»')
     @allure.description('Переходим по ссылками на страницу восстановления пароля, вводим пароль, нажимаем Восстановить'
@@ -26,12 +25,12 @@ class TestMainPage:
         main_page = MainPage(driver)
         main_page.click_login_btn()
         login_page = LoginPage(driver)
-        forgot_pass_page = login_page.click_forgot_pass_link()
-        forgot_pass_page.set_email(user['email'])
-        
-        reset_pass_page = forgot_pass_page.click_restore_btn()
+        reset_pass_page = login_page.click_forgot_pass_link()
+        reset_pass_page.set_email(user['email'])
 
-        assert reset_pass_page.find_elements(ResetPasswordPageLocator.save_btn)
+        reset_pass_page.click_restore_btn()
+
+        assert reset_pass_page.is_element_visible(ResetPasswordPageLocator.save_btn)
 
     @allure.title('Клик по кнопке показать/скрыть пароль делает поле активным — подсвечивает его.')
     @allure.description('Переходим по ссылками на страницу восстановления пароля, вводим пароль, нажимаем Восстановить'
@@ -40,12 +39,12 @@ class TestMainPage:
         main_page = MainPage(driver)
         main_page.click_login_btn()
         login_page = LoginPage(driver)
-        forgot_pass_page = login_page.click_forgot_pass_link()
-        forgot_pass_page.set_email(user['email'])
-        reset_pass_page = forgot_pass_page.click_restore_btn()
+        reset_pass_page = login_page.click_forgot_pass_link()
+        reset_pass_page.set_email(user['email'])
+        reset_pass_page.click_restore_btn()
 
-        old_state = reset_pass_page.get_password_input_state()
+        old_state = reset_pass_page.is_password_input_active()
         reset_pass_page.click_see_hidden_btn()
-        new_state = reset_pass_page.get_password_input_state()
+        new_state = reset_pass_page.is_password_input_active()
 
         assert (old_state is False and new_state is True)

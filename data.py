@@ -7,4 +7,4 @@ class Urls:
 
 class WellKnownConstants:
     MAIL_DOMAIN = "mytests.com"
-    RANDOM_STRING_LEN = 5
+    RANDOM_STRING_LEN_MIN = 10

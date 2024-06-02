@@ -17,7 +17,7 @@ class ResetPasswordPage(HeadersPage):
     def set_code(self, text):
         self.find_element(ResetPasswordPageLocator.code_input).send_keys(text)
 
-    def get_password_input_state(self):
+    def is_password_input_active(self):
         element = self.find_element(ResetPasswordPageLocator.new_password_input)
         class_ = element.find_element(*ResetPasswordPageLocator.parent).get_attribute('class')
 
@@ -25,3 +25,9 @@ class ResetPasswordPage(HeadersPage):
 
     def click_see_hidden_btn(self):
         self.find_element(ResetPasswordPageLocator.see_hidden_btn).click()
+
+    def set_email(self, text):
+        self.find_element(ResetPasswordPageLocator.email_input).send_keys(text)
+
+    def click_restore_btn(self):
+        self.find_element(ResetPasswordPageLocator.restore_btn).click()
