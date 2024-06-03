@@ -19,4 +19,11 @@ class AccountPageLocators(HeaderPageLocator):
     # ссылка История заказов
     order_history_link = (By.LINK_TEXT, 'История заказов')
 
+    # форма со списком заказов
     order_history_form = (By.XPATH, './/div[@class = "OrderHistory_orderHistory__qy1VB"]')
+
+    # список заказов пользователя
+    user_order_list = (By.XPATH, './/ul[@class ="OrderHistory_profileList__374GU OrderHistory_list__KcLDB"]')
+
+    # id заказа
+    order_id = (By.XPATH, './/p[@class = "text text_type_digits-default"]')

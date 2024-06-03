@@ -11,7 +11,7 @@ class TestRestorePassword:
                         'проверяем, что есть кнопка Восстановить')
     def test_go_to_the_password_recovery_page(self, driver):
         main_page = MainPage(driver)
-        main_page.click_login_btn()
+        main_page.click_lk_btn()
         login_page = LoginPage(driver)
 
         reset_pass_page = login_page.click_forgot_pass_link()
@@ -23,7 +23,7 @@ class TestRestorePassword:
                         'проверяем, что появляется кнопка Сохранить')
     def test_on_password_recovery_page_enter_email_and_click_restore_btn(self, driver, user):
         main_page = MainPage(driver)
-        main_page.click_login_btn()
+        main_page.click_lk_btn()
         login_page = LoginPage(driver)
         reset_pass_page = login_page.click_forgot_pass_link()
         reset_pass_page.set_email(user['email'])
@@ -37,7 +37,7 @@ class TestRestorePassword:
                         'проверяем, что нажатие кнопки показать/скрыть пароль делает поле активным')
     def test_on_password_reset_page_click_show_hide_password_btn(self, driver, user):
         main_page = MainPage(driver)
-        main_page.click_login_btn()
+        main_page.click_lk_btn()
         login_page = LoginPage(driver)
         reset_pass_page = login_page.click_forgot_pass_link()
         reset_pass_page.set_email(user['email'])

@@ -13,11 +13,11 @@ class TestLogin:
                         'проверяем, что странице есть кнопка Выход')
     def test_go_to_login_page(self, driver, user):
         main_page = MainPage(driver)
-        main_page.click_login_btn()
+        main_page.click_lk_btn()
         login_page = LoginPage(driver)
         main_page = login_page.login(user['email'], user['password'])
 
-        main_page.click_login_btn()
+        main_page.click_lk_btn()
 
         assert login_page.is_element_visible(AccountPageLocators.exit_btn)
 
@@ -26,11 +26,11 @@ class TestLogin:
                         'проверяем, что странице есть форма со списком заказов')
     def test_go_to_order_history(self, driver, user):
         main_page = MainPage(driver)
-        main_page.click_login_btn()
+        main_page.click_lk_btn()
         login_page = LoginPage(driver)
         main_page = login_page.login(user['email'], user['password'])
 
-        main_page.click_login_btn()
+        main_page.click_lk_btn()
         account_page = AccountPage(driver)
         account_page.click_order_history_btn()
 
@@ -41,11 +41,11 @@ class TestLogin:
                         'проверяем, что открылась форма логина')
     def test_exit_from_account(self, driver, user):
         main_page = MainPage(driver)
-        main_page.click_login_btn()
+        main_page.click_lk_btn()
         login_page = LoginPage(driver)
         main_page = login_page.login(user['email'], user['password'])
 
-        main_page.click_login_btn()
+        main_page.click_lk_btn()
         account_page = AccountPage(driver)
         account_page.click_exit_account_btn()
 
