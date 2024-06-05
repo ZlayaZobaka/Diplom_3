@@ -29,6 +29,7 @@ class MainPage(HeaderPage):
     @allure.step("Получаем номер заказа")
     def get_order_id(self):
         self.wait_invisibility_of_element(MainPageLocators.modal_overlay)
+
         return self.find_element(MainPageLocators.order_id).text
 
     @allure.step("Получаем значение счетчика ингредиента")

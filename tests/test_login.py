@@ -15,7 +15,7 @@ class TestLogin:
         main_page = MainPage(driver)
         main_page.click_lk_btn()
         login_page = LoginPage(driver)
-        main_page = login_page.login(user['email'], user['password'])
+        login_page.login(user['email'], user['password'])
 
         main_page.click_lk_btn()
 
@@ -28,7 +28,7 @@ class TestLogin:
         main_page = MainPage(driver)
         main_page.click_lk_btn()
         login_page = LoginPage(driver)
-        main_page = login_page.login(user['email'], user['password'])
+        login_page.login(user['email'], user['password'])
 
         main_page.click_lk_btn()
         account_page = AccountPage(driver)
@@ -43,7 +43,7 @@ class TestLogin:
         main_page = MainPage(driver)
         main_page.click_lk_btn()
         login_page = LoginPage(driver)
-        main_page = login_page.login(user['email'], user['password'])
+        login_page.login(user['email'], user['password'])
 
         main_page.click_lk_btn()
         account_page = AccountPage(driver)

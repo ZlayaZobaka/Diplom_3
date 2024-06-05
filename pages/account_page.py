@@ -19,6 +19,7 @@ class AccountPage(HeaderPage):
     @allure.step("Возвращаем список заказов из раздела История заказов")
     def get_user_orders_list(self):
         order_list = self.find_element(AccountPageLocators.user_order_list)
+
         return order_list.find_elements(*AccountPageLocators.children)
 
     @allure.step("Получаем номер заказа")

@@ -22,19 +22,13 @@ class LoginPage(HeaderPage):
     def login(self, email, password):
         self.set_email(email)
         self.set_password(password)
-
-        return self.click_login_btn()
+        self.click_login_btn()
 
     @allure.step("Кликаем по кнопке Войти")
     def click_login_btn(self):
         self.find_element(LoginPageLocators.login_btn).click()
         self.wait_invisibility_of_element(LoginPageLocators.modal_overlay)
 
-        return MainPage(self.driver)
-
     @allure.step("Кликаем по ссылке Восстановить пароль")
     def click_forgot_pass_link(self):
         self.find_element(LoginPageLocators.forgot_pass_link).click()
-
-        return ResetPasswordPage(self.driver)
-

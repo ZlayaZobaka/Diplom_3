@@ -92,7 +92,8 @@ class TestMain:
         main_page = MainPage(driver)
         main_page.click_lk_btn()
         login_page = LoginPage(driver)
-        main_page = login_page.login(user['email'], user['password'])
+        login_page.login(user['email'], user['password'])
+
         recipe = main_page.get_random_recipe()
         for i in recipe:
             main_page.add_ingredient_to_order(i)

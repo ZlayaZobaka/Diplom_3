@@ -17,6 +17,7 @@ class FeedPage(HeaderPage):
     @allure.step("Получаем номера заказов")
     def get_orders_ids_list(self):
         orders_list = self.get_orders_list()
+
         return [x.find_element(*FeedPageLocators.order_id).text for x in orders_list]
 
     @allure.step("Выбираем случайный заказ")
