@@ -32,9 +32,10 @@ def user():
     user = helpers.register_user_payload()
 
     with allure.step('Регистрируем пользователя'):
-        Api().register_user(user)
+        api = Api()
+        api.register_user(user)
 
     yield user
 
     with allure.step('Удаляем пользователя'):
-        Api().delete_user(user)
+        api.delete_user(user)
