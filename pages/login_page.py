@@ -32,3 +32,7 @@ class LoginPage(HeaderPage):
     @allure.step("Кликаем по ссылке Восстановить пароль")
     def click_forgot_pass_link(self):
         self.find_element(LoginPageLocators.forgot_pass_link).click()
+
+    @allure.title("Проверяем, доступна ли кнопка Войти")
+    def is_login_btn_present(self):
+        return self.is_element_present(LoginPageLocators.login_btn)

@@ -2,7 +2,6 @@ import allure
 from pages.main_page import MainPage
 from pages.login_page import LoginPage
 from pages.reset_password_page import ResetPasswordPage
-from locators.reset_password_page_locators import ResetPasswordPageLocator
 
 
 class TestRestorePassword:
@@ -17,7 +16,7 @@ class TestRestorePassword:
         login_page = LoginPage(driver)
         login_page.click_forgot_pass_link()
 
-        assert ResetPasswordPage(driver).is_element_visible(ResetPasswordPageLocator.restore_btn)
+        assert ResetPasswordPage(driver).is_restore_btn_visible()
 
     @allure.title('Ввод почты и клик по кнопке «Восстановить»')
     @allure.description('Переходим по ссылками на страницу восстановления пароля, вводим пароль, нажимаем Восстановить'
@@ -32,7 +31,7 @@ class TestRestorePassword:
 
         reset_pass_page.click_restore_btn()
 
-        assert reset_pass_page.is_element_visible(ResetPasswordPageLocator.save_btn)
+        assert reset_pass_page.is_save_btn_visible()
 
     @allure.title('Клик по кнопке показать/скрыть пароль делает поле активным — подсвечивает его.')
     @allure.description('Переходим по ссылками на страницу восстановления пароля, вводим пароль, нажимаем Восстановить'

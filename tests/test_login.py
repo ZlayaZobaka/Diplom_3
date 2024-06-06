@@ -2,8 +2,6 @@ import allure
 from pages.main_page import MainPage
 from pages.login_page import LoginPage
 from pages.account_page import AccountPage
-from locators.account_page_locators import AccountPageLocators
-from locators.login_page_locators import LoginPageLocators
 
 
 class TestLogin:
@@ -19,7 +17,7 @@ class TestLogin:
 
         main_page.click_lk_btn()
 
-        assert login_page.is_element_visible(AccountPageLocators.exit_btn)
+        assert AccountPage(driver).is_exit_btn_visible
 
     @allure.title('Тест перехода на страницу История заказов из личного кабинета')
     @allure.description('Логинимся, переходим в личный кабинет, кликаем на кнопку История заказов'
@@ -34,7 +32,7 @@ class TestLogin:
         account_page = AccountPage(driver)
         account_page.click_order_history_btn()
 
-        assert account_page.is_element_present(AccountPageLocators.order_history_form)
+        assert account_page.is_order_history_form_present()
 
     @allure.title('Тест выхода из аккаунта')
     @allure.description('Логинимся, переходим в личный кабинет, кликаем на кнопку Выход'
@@ -49,4 +47,4 @@ class TestLogin:
         account_page = AccountPage(driver)
         account_page.click_exit_account_btn()
 
-        assert login_page.is_element_present(LoginPageLocators.login_btn)
+        assert login_page.is_login_btn_present

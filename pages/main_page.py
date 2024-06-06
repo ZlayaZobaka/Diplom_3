@@ -54,3 +54,14 @@ class MainPage(HeaderPage):
     def make_an_order(self):
         self.find_element(MainPageLocators.make_an_order_btn).click()
 
+    @allure.title("Проверяем, доступна ли секция Соберите бургер")
+    def is_build_burger_section_visible(self):
+        return self.is_element_visible(MainPageLocators.build_burger_section)
+
+    @allure.title("Проверяем, доступно ли окно с описанием ингредиента")
+    def is_ingredient_desc_visible(self):
+        return self.is_element_visible(MainPageLocators.ingredient_desc)
+
+    @allure.title("Проверяем, доступен ли идентификатор заказа")
+    def is_order_id_visible(self):
+        return self.is_element_visible(MainPageLocators.order_id)

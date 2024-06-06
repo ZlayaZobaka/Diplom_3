@@ -3,8 +3,6 @@ from pages.main_page import MainPage
 from pages.feed_page import FeedPage
 from pages.login_page import LoginPage
 from pages.account_page import AccountPage
-from locators.feed_page_locators import FeedPageLocators
-from locators.login_page_locators import LoginPageLocators
 
 
 class TestFeed:
@@ -20,7 +18,7 @@ class TestFeed:
 
         feed_page.click_to_element(order)
 
-        assert feed_page.is_element_visible(FeedPageLocators.order_window)
+        assert feed_page.is_order_window_visible()
 
     @allure.title('Заказы пользователя из раздела «История заказов» отображаются на странице «Лента заказов»')
     @allure.description('Авторизуемся, создаем заказ'

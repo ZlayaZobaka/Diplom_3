@@ -1,9 +1,9 @@
 import allure
 import pytest
+from pages.feed_page import FeedPage
 from pages.login_page import LoginPage
 from pages.main_page import MainPage
 from locators.main_page_locators import MainPageLocators
-from locators.feed_page_locators import FeedPageLocators
 
 
 class TestMain:
@@ -17,7 +17,7 @@ class TestMain:
 
         main_page.click_builder_btn()
 
-        assert main_page.is_element_visible(MainPageLocators.build_burger_section)
+        assert main_page.is_build_burger_section_visible()
 
     @allure.title('Тест перехода на ленту заказов')
     @allure.description('На главной странице кликаем на кнопку «Лента заказов», '
@@ -27,7 +27,7 @@ class TestMain:
 
         main_page.click_feed_btn()
 
-        assert main_page.is_element_visible(FeedPageLocators.feed_form)
+        assert FeedPage(driver).is_feed_form_visible()
 
     @allure.title('Тест всплывающего окно с деталями ингредиента')
     @allure.description('На главной странице в форме конструктора кликаем на произвольный ингредиент, '
@@ -44,7 +44,7 @@ class TestMain:
         ingredient = main_page.get_random_ingredient(section)
         main_page.click_to_element(ingredient)
 
-        assert main_page.is_element_visible(MainPageLocators.ingredient_desc)
+        assert main_page.is_ingredient_desc_visible
 
     @allure.title('Тест закрытия всплывающего окно с деталями ингредиента')
     @allure.description('На главной странице в форме конструктора кликаем на произвольный ингредиент, '
@@ -60,9 +60,9 @@ class TestMain:
 
         ingredient = main_page.get_random_ingredient(section)
         main_page.click_to_element(ingredient)
-        old_state_window_openness = main_page.is_element_visible(MainPageLocators.ingredient_desc)
+        old_state_window_openness = main_page.is_ingredient_desc_visible()
         main_page.close_description_window()
-        new_state_window_openness = main_page.is_element_visible(MainPageLocators.ingredient_desc)
+        new_state_window_openness = main_page.is_ingredient_desc_visible()
 
         assert old_state_window_openness is True and new_state_window_openness is False
 
@@ -100,4 +100,4 @@ class TestMain:
 
         main_page.make_an_order()
 
-        assert main_page.is_element_visible(MainPageLocators.order_id)
+        assert main_page.is_order_id_visible()

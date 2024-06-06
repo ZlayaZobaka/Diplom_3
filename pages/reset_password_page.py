@@ -33,3 +33,11 @@ class ResetPasswordPage(HeaderPage):
     @allure.step("Кликаем по кнопке Восстановить")
     def click_restore_btn(self):
         self.find_element(ResetPasswordPageLocator.restore_btn).click()
+
+    @allure.title("Проверяем, доступна ли кнопка Восстановить")
+    def is_restore_btn_visible(self):
+        return self.is_element_visible(ResetPasswordPageLocator.restore_btn)
+
+    @allure.title("Проверяем, доступна ли кнопка Сохранить")
+    def is_save_btn_visible(self):
+        return self.is_element_visible(ResetPasswordPageLocator.save_btn)

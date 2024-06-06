@@ -37,3 +37,11 @@ class FeedPage(HeaderPage):
     @allure.step("Получаем номера заказов в статусе В работе")
     def get_in_work_orders_ids(self):
         return self.find_element(FeedPageLocators.in_work_section).text
+
+    @allure.title("Проверяем, доступно ли окно с деталями заказа")
+    def is_order_window_visible(self):
+        return self.is_element_visible(FeedPageLocators.order_window)
+
+    @allure.title("Проверяем, доступна ли форма ленты заказов")
+    def is_feed_form_visible(self):
+        return self.is_element_visible(FeedPageLocators.feed_form)
